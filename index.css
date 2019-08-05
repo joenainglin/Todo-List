@@ -1,0 +1,30 @@
+body{
+    margin: 20px;
+}
+#title{
+    text-align: center;
+
+    padding: 10px;
+    background-color: lightgray;
+}
+
+#lists{
+    background-color: gray;
+    color:white;
+    padding: 5px;
+}
+
+#lists span {
+    float:right;
+}
+
+#form{
+    margin-top: 25px;
+    
+}
+
+
+.red {
+    
+    border: 1px dotted #ff0000
+}
