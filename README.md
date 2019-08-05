@@ -1,5 +1,4 @@
 # Todo-List
-Todo Lists build with JavaScript 
 
 Simple Todo list build mainly with JavaScript, Css and HTML. 
 
