@@ -1,46 +1,75 @@
 
-var mainlist = document.querySelector("ul");
-var allLists = document.querySelectorAll("li");
+var body = document.getElementsByClassName("container");
+var ListsHeading = document.querySelector("ul");
+var Lists = document.querySelectorAll("li");
 
 
 
 
-function Loopall(){
-    var allLists = document.querySelectorAll("li");
-    for ( i = 0; i < allLists.length; i++){
-        allLists[i].addEventListener("click", Mylist);
+function AddClickEvent(){
+    var Lists = document.querySelectorAll("li");
+    for ( i = 0; i < Lists.length; i++){
+        Lists[i].addEventListener("click", CrossList);
+        
     }
 }
 
 
-function Mylist(){
-    console.log(allLists);
+function CrossList(){
     this.classList.toggle('red');
+    if(this.classList.contains('red')){
+        Alert("alert-success", "Check!");
+    }
+    else{
+        Alert("alert-danger", "Uncheck!");
+    }
 }
 
 
 
 
 
-var clicker = document.getElementById("clicker");
-
+var addlist = document.querySelector("a");
 var inputvalue = document.querySelector("input");
 
-clicker.addEventListener("click", addlist);
+addlist.addEventListener("click", AddList);
 
-function addlist(){
-        var li = document.createElement('li');
-        var text = inputvalue.value;
-        li.innerHTML = text;
+
+function CreateLi(){
+    var li = document.createElement('li');
+    li.classList.add("list-group-item");
+    var text = inputvalue.value;
+    li.innerHTML = text;
+    if(li.innerHTML != ""){
         inputvalue.value = "";
         event.preventDefault();
-        mainlist.appendChild(li);
-        Loopall();
-        console.log("kleng", allLists);
+        ListsHeading.appendChild(li);
+    }
+    else{
+        Alert("alert-warning", "Please enter a list!")
+    }
+    
 }
-// when click add list 
 
-// when click x delete
+function AddList(){
+    CreateLi();
+    AddClickEvent();
+
+}
 
 
+function Alert(classname, message){
+    var note = document.createElement("div");
+    note.classList.add("alert", classname);
+    var t = document.createTextNode(message); 
+    note.appendChild(t);
+    document.getElementById("alert").appendChild(note);
+    setTimeout(function(){
+        document.getElementById("alert").removeChild(note)},
+        2000);
 
+
+}
+
+
+AddClickEvent();
